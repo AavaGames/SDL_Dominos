@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9257378123CE46B50082D4BD /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9257378023CE46B50082D4BD /* Timer.cpp */; };
+		9257378223CE4D980082D4BD /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92824A4B23CCF8C20042234E /* SDL2.framework */; };
+		9257378D23CE5EA10082D4BD /* GameEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9257378C23CE5EA10082D4BD /* GameEntity.cpp */; };
+		92A9B03423CFCCE700DE4ED2 /* Assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92A9B03323CFCCE700DE4ED2 /* Assets */; };
+		92A9B03923CFD20600DE4ED2 /* InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92A9B03823CFD20600DE4ED2 /* InputManager.cpp */; };
+		92A9C05323CE34B000ACAD12 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92A9C05223CE34B000ACAD12 /* GameManager.cpp */; };
+		92A9C05623CE381A00ACAD12 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92A9C05423CE381A00ACAD12 /* main.cpp */; };
+		92BA9A3223CE2F74009C4744 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92BA9A3123CE2F74009C4744 /* Graphics.cpp */; };
+		92C89F2E23D0EA6B00B8F52F /* AnimatedTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92C89F2D23D0EA6B00B8F52F /* AnimatedTexture.cpp */; };
+		92C89F3023D0F73700B8F52F /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C89F2F23D0F73700B8F52F /* SDL2_ttf.framework */; };
+		92C9557123CF9D8A009BD3FD /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C9557023CF9D8A009BD3FD /* SDL2_image.framework */; };
+		92C9557623CFA347009BD3FD /* AssetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92C9557423CFA347009BD3FD /* AssetManager.cpp */; };
+		92C9557823CFA741009BD3FD /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92C9557723CFA741009BD3FD /* Texture.cpp */; };
+		92D48E1C23D2267B001BB2EB /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D48E1B23D2267B001BB2EB /* SDL2_mixer.framework */; };
+		92D48E1F23D229E9001BB2EB /* AudioManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D48E1E23D229E9001BB2EB /* AudioManager.cpp */; };
+		92D54EF423DA28A900A939DE /* Domino.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D54EF323DA28A900A939DE /* Domino.cpp */; };
+		92D54EF723DA292E00A939DE /* DominoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D54EF623DA292E00A939DE /* DominoPlayer.cpp */; };
+		92D54EFB23DA32F100A939DE /* DominoUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D54EFA23DA32F100A939DE /* DominoUnit.cpp */; };
+		92D54EFD23DA330000A939DE /* DominoEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D54EFC23DA330000A939DE /* DominoEnemy.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		92824A3E23CCF86D0042234E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				92A9B03423CFCCE700DE4ED2 /* Assets in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		9257377C23CE457C0082D4BD /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		9257378023CE46B50082D4BD /* Timer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
+		9257378523CE53840082D4BD /* MathHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MathHelper.h; sourceTree = "<group>"; };
+		9257378B23CE5E910082D4BD /* GameEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameEntity.h; sourceTree = "<group>"; };
+		9257378C23CE5EA10082D4BD /* GameEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameEntity.cpp; sourceTree = "<group>"; };
+		92824A4023CCF86D0042234E /* SDL_Dominos */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDL_Dominos; sourceTree = BUILT_PRODUCTS_DIR; };
+		92824A4B23CCF8C20042234E /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		92824A4E23CD06360042234E /* Graphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graphics.h; sourceTree = "<group>"; };
+		92A9B03323CFCCE700DE4ED2 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
+		92A9B03723CFD1ED00DE4ED2 /* InputManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputManager.h; sourceTree = "<group>"; };
+		92A9B03823CFD20600DE4ED2 /* InputManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InputManager.cpp; sourceTree = "<group>"; };
+		92A9C05223CE34B000ACAD12 /* GameManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
+		92A9C05423CE381A00ACAD12 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		92BA9A3123CE2F74009C4744 /* Graphics.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Graphics.cpp; sourceTree = "<group>"; };
+		92BA9A3623CE32EB009C4744 /* GameManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
+		92C89F2C23D0EA1400B8F52F /* AnimatedTexture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimatedTexture.h; sourceTree = "<group>"; };
+		92C89F2D23D0EA6B00B8F52F /* AnimatedTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedTexture.cpp; sourceTree = "<group>"; };
+		92C89F2F23D0F73700B8F52F /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
+		92C9557023CF9D8A009BD3FD /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
+		92C9557223CFA131009BD3FD /* AssetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetManager.h; sourceTree = "<group>"; };
+		92C9557423CFA347009BD3FD /* AssetManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AssetManager.cpp; sourceTree = "<group>"; };
+		92C9557723CFA741009BD3FD /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		92C9557923CFA74B009BD3FD /* Texture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
+		92D48E1B23D2267B001BB2EB /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
+		92D48E1D23D229DF001BB2EB /* AudioManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
+		92D48E1E23D229E9001BB2EB /* AudioManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioManager.cpp; sourceTree = "<group>"; };
+		92D54EF223DA287200A939DE /* Domino.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domino.h; sourceTree = "<group>"; };
+		92D54EF323DA28A900A939DE /* Domino.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Domino.cpp; sourceTree = "<group>"; };
+		92D54EF523DA28B800A939DE /* DominoPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DominoPlayer.h; sourceTree = "<group>"; };
+		92D54EF623DA292E00A939DE /* DominoPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DominoPlayer.cpp; sourceTree = "<group>"; };
+		92D54EF823DA297A00A939DE /* DominoEnemy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DominoEnemy.h; sourceTree = "<group>"; };
+		92D54EF923DA299200A939DE /* DominoUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DominoUnit.h; sourceTree = "<group>"; };
+		92D54EFA23DA32F100A939DE /* DominoUnit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DominoUnit.cpp; sourceTree = "<group>"; };
+		92D54EFC23DA330000A939DE /* DominoEnemy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DominoEnemy.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		92824A3D23CCF86D0042234E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9257378223CE4D980082D4BD /* SDL2.framework in Frameworks */,
+				92C9557123CF9D8A009BD3FD /* SDL2_image.framework in Frameworks */,
+				92C89F3023D0F73700B8F52F /* SDL2_ttf.framework in Frameworks */,
+				92D48E1C23D2267B001BB2EB /* SDL2_mixer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9257378723CE5DA20082D4BD /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				9257378B23CE5E910082D4BD /* GameEntity.h */,
+				9257378C23CE5EA10082D4BD /* GameEntity.cpp */,
+				92C9557923CFA74B009BD3FD /* Texture.h */,
+				92C9557723CFA741009BD3FD /* Texture.cpp */,
+				92C89F2C23D0EA1400B8F52F /* AnimatedTexture.h */,
+				92C89F2D23D0EA6B00B8F52F /* AnimatedTexture.cpp */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		92824A3723CCF86D0042234E = {
+			isa = PBXGroup;
+			children = (
+				92A9B03323CFCCE700DE4ED2 /* Assets */,
+				92824A4223CCF86D0042234E /* SDL_Dominos */,
+				92824A4123CCF86D0042234E /* Products */,
+				92824A4A23CCF8C20042234E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+			usesTabs = 1;
+		};
+		92824A4123CCF86D0042234E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				92824A4023CCF86D0042234E /* SDL_Dominos */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		92824A4223CCF86D0042234E /* SDL_Dominos */ = {
+			isa = PBXGroup;
+			children = (
+				92A9C05423CE381A00ACAD12 /* main.cpp */,
+				9257378723CE5DA20082D4BD /* Entities */,
+				92D54EF023DA1F4B00A939DE /* Managers */,
+				92D54EF123DA284500A939DE /* Dominos */,
+				9257377C23CE457C0082D4BD /* Timer.h */,
+				9257378023CE46B50082D4BD /* Timer.cpp */,
+				9257378523CE53840082D4BD /* MathHelper.h */,
+			);
+			path = SDL_Dominos;
+			sourceTree = "<group>";
+		};
+		92824A4A23CCF8C20042234E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				92D48E1B23D2267B001BB2EB /* SDL2_mixer.framework */,
+				92C89F2F23D0F73700B8F52F /* SDL2_ttf.framework */,
+				92C9557023CF9D8A009BD3FD /* SDL2_image.framework */,
+				92824A4B23CCF8C20042234E /* SDL2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		92D54EF023DA1F4B00A939DE /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				92824A4E23CD06360042234E /* Graphics.h */,
+				92BA9A3123CE2F74009C4744 /* Graphics.cpp */,
+				92BA9A3623CE32EB009C4744 /* GameManager.h */,
+				92A9C05223CE34B000ACAD12 /* GameManager.cpp */,
+				92C9557223CFA131009BD3FD /* AssetManager.h */,
+				92C9557423CFA347009BD3FD /* AssetManager.cpp */,
+				92A9B03723CFD1ED00DE4ED2 /* InputManager.h */,
+				92A9B03823CFD20600DE4ED2 /* InputManager.cpp */,
+				92D48E1D23D229DF001BB2EB /* AudioManager.h */,
+				92D48E1E23D229E9001BB2EB /* AudioManager.cpp */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		92D54EF123DA284500A939DE /* Dominos */ = {
+			isa = PBXGroup;
+			children = (
+				92D54EF223DA287200A939DE /* Domino.h */,
+				92D54EF323DA28A900A939DE /* Domino.cpp */,
+				92D54EF923DA299200A939DE /* DominoUnit.h */,
+				92D54EFA23DA32F100A939DE /* DominoUnit.cpp */,
+				92D54EF523DA28B800A939DE /* DominoPlayer.h */,
+				92D54EF623DA292E00A939DE /* DominoPlayer.cpp */,
+				92D54EF823DA297A00A939DE /* DominoEnemy.h */,
+				92D54EFC23DA330000A939DE /* DominoEnemy.cpp */,
+			);
+			path = Dominos;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		92824A3F23CCF86D0042234E /* SDL_Dominos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92824A4723CCF86D0042234E /* Build configuration list for PBXNativeTarget "SDL_Dominos" */;
+			buildPhases = (
+				92824A3C23CCF86D0042234E /* Sources */,
+				92824A3D23CCF86D0042234E /* Frameworks */,
+				92824A3E23CCF86D0042234E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SDL_Dominos;
+			productName = SDL_Tutorial;
+			productReference = 92824A4023CCF86D0042234E /* SDL_Dominos */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		92824A3823CCF86D0042234E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Philip Fertsman";
+				TargetAttributes = {
+					92824A3F23CCF86D0042234E = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 92824A3B23CCF86D0042234E /* Build configuration list for PBXProject "SDL_Dominos" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 92824A3723CCF86D0042234E;
+			productRefGroup = 92824A4123CCF86D0042234E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				92824A3F23CCF86D0042234E /* SDL_Dominos */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		92824A3C23CCF86D0042234E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92C9557623CFA347009BD3FD /* AssetManager.cpp in Sources */,
+				92C9557823CFA741009BD3FD /* Texture.cpp in Sources */,
+				92C89F2E23D0EA6B00B8F52F /* AnimatedTexture.cpp in Sources */,
+				92D54EFB23DA32F100A939DE /* DominoUnit.cpp in Sources */,
+				92BA9A3223CE2F74009C4744 /* Graphics.cpp in Sources */,
+				92D54EF723DA292E00A939DE /* DominoPlayer.cpp in Sources */,
+				92D54EF423DA28A900A939DE /* Domino.cpp in Sources */,
+				92A9C05323CE34B000ACAD12 /* GameManager.cpp in Sources */,
+				92A9B03923CFD20600DE4ED2 /* InputManager.cpp in Sources */,
+				92D48E1F23D229E9001BB2EB /* AudioManager.cpp in Sources */,
+				92D54EFD23DA330000A939DE /* DominoEnemy.cpp in Sources */,
+				9257378D23CE5EA10082D4BD /* GameEntity.cpp in Sources */,
+				92A9C05623CE381A00ACAD12 /* main.cpp in Sources */,
+				9257378123CE46B50082D4BD /* Timer.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		92824A4523CCF86D0042234E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		92824A4623CCF86D0042234E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		92824A4823CCF86D0042234E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 49GR393FA5;
+				ENABLE_HARDENED_RUNTIME = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		92824A4923CCF86D0042234E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 49GR393FA5;
+				ENABLE_HARDENED_RUNTIME = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		92824A3B23CCF86D0042234E /* Build configuration list for PBXProject "SDL_Dominos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92824A4523CCF86D0042234E /* Debug */,
+				92824A4623CCF86D0042234E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92824A4723CCF86D0042234E /* Build configuration list for PBXNativeTarget "SDL_Dominos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92824A4823CCF86D0042234E /* Debug */,
+				92824A4923CCF86D0042234E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 92824A3823CCF86D0042234E /* Project object */;
+}
