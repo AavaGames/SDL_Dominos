@@ -39,6 +39,9 @@ GameManager::GameManager() : mQuit(false)
 	mTimer = Timer::Instance();
 	mInputManager = InputManager::Instance();
 	mAudioManager = AudioManager::Instance();
+	mStage = Stage::Instance();
+	
+	gameOverTimer = 0.0f;
 	
 	dominoPlayerOne = nullptr;
 	dominoPlayerTwo = nullptr;
@@ -49,7 +52,7 @@ GameManager::GameManager() : mQuit(false)
 	currentScreenType = Start;
 	onePlayer = true;
 	
-	mBackgroundTexture = new Texture("Art/Dominos_SpriteSheet.png", 0, 0, 512, 448, false);
+	mBackgroundTexture = new Texture("Art/Dominos_SpriteSheet.png", 0, 0, 512, 448, true);
 	mBackgroundTexture->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT*0.5f));
 	
 	int size = 16;
@@ -61,6 +64,30 @@ GameManager::GameManager() : mQuit(false)
 	
 	mStartScreenWinGameFont = new Texture("4 POINTS WINS GAME", "Fonts/emulogic.TTF", size, { 255, 255, 255 }, false);
 	mStartScreenWinGameFont->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.90);
+	
+	mLeftPoint0 = new Texture("Art/Dominos_SpriteSheet.png", 0, 524, 16, 16, false);
+	mLeftPoint0->Position(128+8, 16+8);
+	mLeftPoint1 = new Texture("Art/Dominos_SpriteSheet.png", 18, 524, 16, 16, false);
+	mLeftPoint1->Position(128+8, 16+8);
+	mLeftPoint2 = new Texture("Art/Dominos_SpriteSheet.png", 36, 524, 16, 16, false);
+	mLeftPoint2->Position(128+8, 16+8);
+	mLeftPoint3 = new Texture("Art/Dominos_SpriteSheet.png", 54, 524, 16, 16, false);
+	mLeftPoint3->Position(128+8, 16+8);
+	mLeftPoint4 = new Texture("Art/Dominos_SpriteSheet.png", 72, 524, 16, 16, false);
+	mLeftPoint4->Position(128+8, 16+8);
+	mCurrentLeftPoint = mLeftPoint0;
+	
+	mRightPoint0 = new Texture("Art/Dominos_SpriteSheet.png", 0, 542, 16, 16, false);
+	mRightPoint0->Position(384+8, 16+8);
+	mRightPoint1 = new Texture("Art/Dominos_SpriteSheet.png", 18, 542, 16, 16, false);
+	mRightPoint1->Position(384+8, 16+8);
+	mRightPoint2 = new Texture("Art/Dominos_SpriteSheet.png", 36, 542, 16, 16, false);
+	mRightPoint2->Position(384+8, 16+8);
+	mRightPoint3 = new Texture("Art/Dominos_SpriteSheet.png", 54, 542, 16, 16, false);
+	mRightPoint3->Position(384+8, 16+8);
+	mRightPoint4 = new Texture("Art/Dominos_SpriteSheet.png", 72, 542, 16, 16, false);
+	mRightPoint4->Position(384+8, 16+8);
+	mCurrentRightPoint = mRightPoint0;
 }
 
 GameManager::~GameManager()
@@ -78,6 +105,9 @@ GameManager::~GameManager()
 	mStartScreenWinGameFont = nullptr;
 	
 	ClearBoard();
+	
+	Stage::Release();
+	mStage = nullptr;
 	
 	Timer::Release();
 	mTimer = nullptr;
@@ -131,46 +161,85 @@ void GameManager::Update()
 		dominoEnemyOne->Update();
 		dominoEnemyTwo->Update();
 		
-		if (mInputManager->KeyDown(SDL_SCANCODE_1))
+		if (mInputManager->KeyPressed(SDL_SCANCODE_1))
 		{
+			leftPoints = 0;
+			rightPoints = 0;
+			
+			currentScreenType = Playing;
 			BuildBoard(true);
-			currentScreenType = Playing;
 		}
-		else if (mInputManager->KeyDown(SDL_SCANCODE_2))
+		else if (mInputManager->KeyPressed(SDL_SCANCODE_2))
 		{
-			BuildBoard(false);
+			leftPoints = 0;
+			rightPoints = 0;
+			
 			currentScreenType = Playing;
+			BuildBoard(false);
 		}
 	}
 	else if (currentScreenType == Playing)
 	{
 		if (onePlayer)
 		{
+			if (dominoPlayerOne->currentUnitState == DominoUnit::UnitState::Lose)
+			{
+				dominoEnemyOne->currentUnitState = DominoUnit::UnitState::Win;
+				
+				AddPoint(false);
+				currentScreenType = GameOver;
+			}
+			else if (dominoEnemyOne->currentUnitState == DominoUnit::UnitState::Lose)
+			{
+				dominoPlayerOne->currentUnitState = DominoUnit::UnitState::Win;
+				
+				AddPoint(true);
+				currentScreenType = GameOver;
+			}
 			dominoPlayerOne->Update();
 			dominoEnemyOne->Update();
 		}
 		else
 		{
+			if (dominoPlayerOne->currentUnitState == DominoUnit::UnitState::Lose)
+			{
+				dominoPlayerTwo->currentUnitState = DominoUnit::UnitState::Win;
+				
+				AddPoint(false);
+				currentScreenType = GameOver;
+			}
+			else if (dominoPlayerTwo->currentUnitState == DominoUnit::UnitState::Lose)
+			{
+				dominoPlayerOne->currentUnitState = DominoUnit::UnitState::Win;
+				
+				AddPoint(true);
+				currentScreenType = GameOver;
+			}
 			dominoPlayerOne->Update();
 			dominoPlayerTwo->Update();
+		}
+		if (mInputManager->KeyPressed(SDL_SCANCODE_ESCAPE))
+		{
+			currentScreenType = Start;
+			BuildStartBoard();
 		}
 	}
 	else if (currentScreenType == GameOver)
 	{
-		//AddPoint(bool leftSide)
-		if (leftPoints == 4 || rightPoints == 4)
+		gameOverTimer += mTimer->DeltaTime();
+		if (gameOverTimer >= maxGameOverTimer)
 		{
-			//wait a litte
-			leftPoints = 0;
-			rightPoints = 0;
-			
-			BuildStartBoard();
-			currentScreenType = Start;
-		}
-		else
-		{
-			//Wait a little
-			BuildBoard(onePlayer);
+			gameOverTimer = 0.0f;
+			if (leftPoints == 4 || rightPoints == 4)
+			{
+				BuildStartBoard();
+				currentScreenType = Start;
+			}
+			else
+			{
+				BuildBoard(onePlayer);
+				currentScreenType = Playing;
+			}
 		}
 	}
 }
@@ -185,7 +254,9 @@ void GameManager::Render()
 	mGraphics->ClearBackBuffer();
 	
 	mBackgroundTexture->Render();
-	
+	mCurrentLeftPoint->Render();
+	mCurrentRightPoint->Render();
+
 	if (currentScreenType == Start)
 	{
 		mGameOverFont->Render();
@@ -223,38 +294,50 @@ void GameManager::Render()
 			dominoPlayerTwo->Render();
 		}
 	}
-	
+
 	mGraphics->Render();
 }
 
 void GameManager::BuildBoard(bool isOnePlayer)
 {
-	onePlayer = isOnePlayer;
-	
 	ClearBoard();
 	
+	onePlayer = isOnePlayer;
 	if (onePlayer)
 	{
-		dominoPlayerOne = new DominoPlayer(DominoUnit::Left);
-		dominoEnemyOne = new DominoEnemy(DominoUnit::Right);
+		dominoPlayerOne = new DominoPlayer(DominoUnit::LeftSide);
+		dominoEnemyOne = new DominoEnemy(DominoUnit::RightSide);
 	}
 	else
 	{
-		dominoPlayerOne = new DominoPlayer(DominoUnit::Left);
-		dominoPlayerTwo = new DominoPlayer(DominoUnit::Right);
+		dominoPlayerOne = new DominoPlayer(DominoUnit::LeftSide);
+		dominoPlayerTwo = new DominoPlayer(DominoUnit::RightSide);
 	}
+	
+	std::cout << "BUILDBOARD" << std::endl;
+	mStage->PrintStage();
 }
 
 void GameManager::BuildStartBoard()
 {
 	ClearBoard();
 	
-	dominoEnemyOne = new DominoEnemy(DominoUnit::Left);
-	dominoEnemyTwo = new DominoEnemy(DominoUnit::Right);
+	mCurrentLeftPoint = mLeftPoint0;
+	mCurrentRightPoint = mRightPoint0;
+	
+	dominoEnemyOne = new DominoEnemy(DominoUnit::LeftSide);
+	dominoEnemyTwo = new DominoEnemy(DominoUnit::RightSide);
+	
+	std::cout << "---STARTBOARD---" << std::endl;
+	mStage->PrintStage();
 }
 
 void GameManager::ClearBoard()
 {
+	//If this isnt here once you change modes it stops rendering for some reason
+	mBackgroundTexture = new Texture("Art/Dominos_SpriteSheet.png", 0, 0, 512, 448, true);
+	mBackgroundTexture->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT*0.5f));
+	
 	delete dominoPlayerOne;
 	dominoPlayerOne = nullptr;
 	
@@ -266,6 +349,8 @@ void GameManager::ClearBoard()
 	
 	delete dominoEnemyTwo;
 	dominoEnemyTwo = nullptr;
+	
+	mStage->InitializeStage();
 }
 
 void GameManager::AddPoint(bool leftSide)
@@ -273,10 +358,42 @@ void GameManager::AddPoint(bool leftSide)
 	if (leftSide)
 	{
 		leftPoints++;
+		if (leftPoints == 1)
+		{
+			mCurrentLeftPoint = mLeftPoint1;
+		}
+		else if (leftPoints == 2)
+		{
+			mCurrentLeftPoint = mLeftPoint2;
+		}
+		else if (leftPoints == 3)
+		{
+			mCurrentLeftPoint = mLeftPoint3;
+		}
+		else if (leftPoints == 4)
+		{
+			mCurrentLeftPoint = mLeftPoint4;
+		}
 	}
 	else
 	{
 		rightPoints++;
+		if (rightPoints == 1)
+		{
+			mCurrentRightPoint = mRightPoint1;
+		}
+		else if (rightPoints == 2)
+		{
+			mCurrentRightPoint = mRightPoint2;
+		}
+		else if (rightPoints == 3)
+		{
+			mCurrentRightPoint = mRightPoint3;
+		}
+		else if (rightPoints == 4)
+		{
+			mCurrentRightPoint = mRightPoint4;
+		}
 	}
 }
 

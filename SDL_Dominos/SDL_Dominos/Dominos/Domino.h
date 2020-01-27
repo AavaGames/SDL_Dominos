@@ -15,9 +15,34 @@ using namespace SDLFramework;
 class Domino //: public Texture
 {
 public:
+	enum DominoState { Standing, Fallen };
+	DominoState currentDominoState;
 	
+	Domino(Vector2 pos, bool leftSide);
+	~Domino();
+	
+	void Update();
+	void Render();
 private:
-
+	/*
+	Texture * m
+	Texture * m
+	Texture * m
+	Texture * m
+	Texture * m
+	Texture * m
+	Texture * m
+	Texture * m
+	Texture * m
+	Texture * m
+	Texture * m
+	Texture * m
+	Texture * m
+	Texture * m
+	Texture * m
+	Texture * m
+	*/
+	Texture * mCurrentTexture;
 };
 
 #endif /* Domino_h */

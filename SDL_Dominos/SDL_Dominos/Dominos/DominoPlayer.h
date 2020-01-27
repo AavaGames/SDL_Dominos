@@ -16,6 +16,7 @@ public:
 	DominoPlayer(UnitSide side);
 	~DominoPlayer();
 	
+	void Input() override;
 private:
 	
 };

@@ -18,6 +18,10 @@
 #include "DominoPlayer.h"
 #include "DominoEnemy.h"
 
+#include "Stage.h"
+
+#include <iostream>
+
 namespace SDLFramework
 {
 
@@ -56,6 +60,20 @@ private:
 	Texture * mStartScreenPerCoinFont;
 	Texture * mStartScreenWinGameFont;
 	
+	Texture * mLeftPoint0;
+	Texture * mLeftPoint1;
+	Texture * mLeftPoint2;
+	Texture * mLeftPoint3;
+	Texture * mLeftPoint4;
+	Texture * mCurrentLeftPoint;
+	
+	Texture * mRightPoint0;
+	Texture * mRightPoint1;
+	Texture * mRightPoint2;
+	Texture * mRightPoint3;
+	Texture * mRightPoint4;
+	Texture * mCurrentRightPoint;
+
 	bool onePlayer;
 	
 	void BuildBoard(bool isOnePlayer);
@@ -71,6 +89,11 @@ private:
 	
 	int leftPoints;
 	int rightPoints;
+	
+	float gameOverTimer;
+	const float maxGameOverTimer = 2.0f;
+	
+	Stage * mStage;
 };
 
 }

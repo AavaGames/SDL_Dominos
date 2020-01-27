@@ -15,7 +15,8 @@ class DominoEnemy : public DominoUnit
 public:
 	DominoEnemy(UnitSide side);
 	~DominoEnemy();
-	
+
+	void Input() override;
 private:
 	
 };

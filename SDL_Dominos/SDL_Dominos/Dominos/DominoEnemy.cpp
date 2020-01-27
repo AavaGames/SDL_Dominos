@@ -10,10 +10,16 @@
 
 DominoEnemy::DominoEnemy(UnitSide side) : DominoUnit(side)
 {
-	
+	std::cerr << "Enemy Created" << std::endl;
+
 }
 
 DominoEnemy::~DominoEnemy()
+{
+	
+}
+
+void DominoEnemy::Input()
 {
 	
 }

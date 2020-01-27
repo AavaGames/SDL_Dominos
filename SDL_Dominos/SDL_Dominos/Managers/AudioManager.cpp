@@ -30,7 +30,7 @@ void AudioManager::Release()
 AudioManager::AudioManager()
 {
 	mAssetManager = AssetManager::Instance();
-	
+	/*
 	if (SDL_InitSubSystem(SDL_INIT_AUDIO) < 0)
 	{
 		std::cerr << "Unable to initialize SDL audio! SDL Error: " << SDL_GetError() << std::endl;
@@ -41,6 +41,7 @@ AudioManager::AudioManager()
 	{
 		std::cerr << "Unable to initialize audio! Mix Error: " << Mix_GetError() << std::endl;
 	}
+	*/
 }
 
 AudioManager::~AudioManager()
