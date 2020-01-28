@@ -26,15 +26,15 @@ public:
 	UnitSide currentUnitSide;
 	Stage::TileType currentTileType;
 	
-	enum Direction { Up, Right, Down, Left };
-	Direction currentDirection;
-	Direction prevDirection;
+	Domino::Direction currentDirection;
+	Domino::Direction prevDirection;
 	
 	DominoUnit(UnitSide side);
 	~DominoUnit();
 	
 	void Update();
 	void Render();
+	void RenderDominos();
 
 	float turnTimer;
 	float turnTime;
@@ -45,12 +45,17 @@ public:
 	void Movement();
 	void PlaceDomino();
 	void FallDominos();
+	
+	bool mDominosFallen;
 protected:
 	Timer * mTimer;
 	InputManager * mInputManager;
 	Stage * mStage;
 	
 	std::vector<Domino *> dominoList;
+	float dominoFallDelayTimer;
+	const float maxDominoFallDelay = 0.05f;
+	int dominoIterator;
 	
 	Texture * mUpSprite;
 	Texture * mDownSprite;
@@ -64,6 +69,7 @@ protected:
 	void MoveToMapCoord(Vector2 mapPos);
 	
 	void CollisionCheck();
+	void Lost();
 };
 
 #endif /* DominoUnit_h */

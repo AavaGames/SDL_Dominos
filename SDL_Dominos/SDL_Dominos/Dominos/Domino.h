@@ -18,30 +18,17 @@ public:
 	enum DominoState { Standing, Fallen };
 	DominoState currentDominoState;
 	
-	Domino(Vector2 pos, bool leftSide);
+	enum Direction { Up, Right, Down, Left };
+	
+	Domino(Vector2 pos, bool leftSide, Direction currentDirection, Direction prevDirection);
 	~Domino();
 	
-	void Update();
+	void Fall();
 	void Render();
 private:
-	/*
-	Texture * m
-	Texture * m
-	Texture * m
-	Texture * m
-	Texture * m
-	Texture * m
-	Texture * m
-	Texture * m
-	Texture * m
-	Texture * m
-	Texture * m
-	Texture * m
-	Texture * m
-	Texture * m
-	Texture * m
-	Texture * m
-	*/
+	Texture * mStandingTexture;
+	Texture * mFallenTexture;
+	
 	Texture * mCurrentTexture;
 };
 

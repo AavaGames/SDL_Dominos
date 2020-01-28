@@ -10,7 +10,7 @@
 
 DominoPlayer::DominoPlayer(UnitSide side) : DominoUnit(side)
 {
-	std::cerr << "Player Created" << std::endl;
+	
 }
 
 DominoPlayer::~DominoPlayer()
@@ -22,21 +22,21 @@ void DominoPlayer::Input()
 {
 	if (currentUnitSide == LeftSide)
 	{
-		if (mInputManager->KeyDown(SDL_SCANCODE_W) && prevDirection != Down)
+		if (mInputManager->KeyDown(SDL_SCANCODE_W) && prevDirection != Domino::Down)
 		{
-			currentDirection = Up;
+			currentDirection = Domino::Up;
 		}
-		else if (mInputManager->KeyDown(SDL_SCANCODE_S) && prevDirection != Up)
+		else if (mInputManager->KeyDown(SDL_SCANCODE_S) && prevDirection != Domino::Up)
 		{
-			currentDirection = Down;
+			currentDirection = Domino::Down;
 		}
-		else if (mInputManager->KeyDown(SDL_SCANCODE_D) && prevDirection != Left)
+		else if (mInputManager->KeyDown(SDL_SCANCODE_D) && prevDirection != Domino::Left)
 		{
-			currentDirection = Right;
+			currentDirection = Domino::Right;
 		}
-		else if (mInputManager->KeyDown(SDL_SCANCODE_A) && prevDirection != Right)
+		else if (mInputManager->KeyDown(SDL_SCANCODE_A) && prevDirection != Domino::Right)
 		{
-			currentDirection = Left;
+			currentDirection = Domino::Left;
 		}
 		else
 		{
@@ -45,21 +45,21 @@ void DominoPlayer::Input()
 	}
 	else
 	{
-		if (mInputManager->KeyDown(SDL_SCANCODE_O) && prevDirection != Down)
+		if (mInputManager->KeyDown(SDL_SCANCODE_O) && prevDirection != Domino::Down)
 		{
-			currentDirection = Up;
+			currentDirection = Domino::Up;
 		}
-		else if (mInputManager->KeyDown(SDL_SCANCODE_L) && prevDirection != Up)
+		else if (mInputManager->KeyDown(SDL_SCANCODE_L) && prevDirection != Domino::Up)
 		{
-			currentDirection = Down;
+			currentDirection = Domino::Down;
 		}
-		else if (mInputManager->KeyDown(SDL_SCANCODE_SEMICOLON) && prevDirection != Left)
+		else if (mInputManager->KeyDown(SDL_SCANCODE_SEMICOLON) && prevDirection != Domino::Left)
 		{
-			currentDirection = Right;
+			currentDirection = Domino::Right;
 		}
-		else if (mInputManager->KeyDown(SDL_SCANCODE_K) && prevDirection != Right)
+		else if (mInputManager->KeyDown(SDL_SCANCODE_K) && prevDirection != Domino::Right)
 		{
-			currentDirection = Left;
+			currentDirection = Domino::Left;
 		}
 		else
 		{

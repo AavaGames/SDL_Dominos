@@ -16,6 +16,7 @@ public:
 	DominoEnemy(UnitSide side);
 	~DominoEnemy();
 
+	void AI();
 	void Input() override;
 private:
 	

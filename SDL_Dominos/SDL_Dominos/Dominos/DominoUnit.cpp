@@ -17,7 +17,12 @@ DominoUnit::DominoUnit(UnitSide side)
 	currentUnitState = Playing;
 	currentUnitSide = side;
 	
-	turnTime = 1.0f;
+	dominoIterator = 0;
+	dominoFallDelayTimer = 0.0f;
+	mDominosFallen = false;
+	
+	turnTime = 0.5f;
+	
 	mCurrentSprite = nullptr;
 	
 	if (currentUnitSide == LeftSide)
@@ -32,13 +37,10 @@ DominoUnit::DominoUnit(UnitSide side)
 		
 		mCurrentSprite = mRightSprite;
 		
-		currentDirection = Right;
-		prevDirection = Right;
+		currentDirection = Domino::Right;
+		prevDirection = Domino::Right;
 
 		mapPosition = Vector2(8, 13);
-		//Set actual position
-		MoveToMapCoord(mapPosition);
-		CollisionCheck();
 	}
 	else
 	{
@@ -52,14 +54,13 @@ DominoUnit::DominoUnit(UnitSide side)
 		
 		mCurrentSprite = mLeftSprite;
 		
-		currentDirection = Left;
-		prevDirection = Left;
+		currentDirection = Domino::Left;
+		prevDirection = Domino::Left;
 		
 		mapPosition = Vector2(23, 12);
-		//Set actual position
-		MoveToMapCoord(mapPosition);
-		CollisionCheck();
 	}
+	MoveToMapCoord(mapPosition);
+	CollisionCheck();
 }
 
 DominoUnit::~DominoUnit()
@@ -77,6 +78,12 @@ DominoUnit::~DominoUnit()
 	
 	delete mLeftSprite;
 	mLeftSprite = nullptr;
+	
+	for (auto dom : dominoList)
+	{
+		delete dom;
+		dom = nullptr;
+	}
 }
 
 void DominoUnit::Update()
@@ -86,26 +93,32 @@ void DominoUnit::Update()
 		Input();
 		if (Turn())
 		{
+			//Play SFX
 			PlaceDomino();
 			Movement();
 		}
 	}
-	else if (currentUnitState == UnitState::Lose)
+	else if (currentUnitState == UnitState::Lose && !mDominosFallen)
 	{
 		FallDominos();
-		//Restart
 	}
-	//else do nothing;
+	//else do nothing
 }
 
 void DominoUnit::Render()
 {
-		for (auto dom : dominoList)
+	if (currentUnitState != Lose)
+	{
+		mCurrentSprite->Render();
+	}
+}
+
+void DominoUnit::RenderDominos()
+{
+	for (auto dom : dominoList)
 	{
 		dom->Render();
 	}
-	
-	mCurrentSprite->Render();
 }
 
 bool DominoUnit::Turn()
@@ -115,7 +128,7 @@ bool DominoUnit::Turn()
 	{
 		turnTimer = 0.0f;
 		
-		turnTime *= 0.95;
+		turnTime *= 0.98;
 		if (turnTime <= minTurnTime)
 		{
 			turnTime = minTurnTime;
@@ -128,22 +141,22 @@ bool DominoUnit::Turn()
 
 void DominoUnit::Movement()
 {
-	if (currentDirection == Up)
+	if (currentDirection == Domino::Up)
 	{
 		mCurrentSprite = mUpSprite;
 		mapPosition.y--;
 	}
-	else if (currentDirection == Down)
+	else if (currentDirection == Domino::Down)
 	{
 		mCurrentSprite = mDownSprite;
 		mapPosition.y++;
 	}
-	else if (currentDirection == Right)
+	else if (currentDirection == Domino::Right)
 	{
 		mCurrentSprite = mRightSprite;
 		mapPosition.x++;
 	}
-	else if (currentDirection == Left)
+	else if (currentDirection == Domino::Left)
 	{
 		mCurrentSprite = mLeftSprite;
 		mapPosition.x--;
@@ -165,21 +178,22 @@ void DominoUnit::CollisionCheck()
 	{
 		mStage->SetTile(currentTileType, mapPosition);
 	}
-	else currentUnitState = Lose;
+	else
+	{
+		Lost();
+	}
 }
 
 void DominoUnit::PlaceDomino()
 {
-	//depending on direction and previous direction
-	//place appropriate domino on previous position
 	Domino * domino;
 	if (currentUnitSide == LeftSide)
 	{
-		domino = new Domino(mStage->MapToWorld(mapPosition), true);
+		domino = new Domino(mStage->MapToWorld(mapPosition), true, currentDirection, prevDirection);
 	}
 	else
 	{
-		domino = new Domino(mStage->MapToWorld(mapPosition), false);
+		domino = new Domino(mStage->MapToWorld(mapPosition), false, currentDirection, prevDirection);
 	}
 	
 	dominoList.push_back(domino);
@@ -188,8 +202,24 @@ void DominoUnit::PlaceDomino()
 void DominoUnit::FallDominos()
 {
 	//loop through domino list from last to first set to fallen
-	//for (auto domino in dominoList)
-		//domino.currentDominoState = Domino::DominoState::Fallen;
-		//add delay
-	//When done
+	dominoFallDelayTimer += mTimer->DeltaTime();
+	if (dominoFallDelayTimer >= maxDominoFallDelay)
+	{
+		dominoFallDelayTimer = 0.0f;
+		
+		dominoList[dominoIterator]->Fall();
+		
+		dominoIterator--;
+		if (dominoIterator == -1)
+		{
+			mDominosFallen = true;
+		}
+	}
+}
+
+void DominoUnit::Lost()
+{
+	//Play SFX
+	currentUnitState = Lose;
+	dominoIterator = (int)dominoList.size() - 1;
 }

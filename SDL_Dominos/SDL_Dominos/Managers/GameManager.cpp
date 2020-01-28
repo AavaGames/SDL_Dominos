@@ -158,6 +158,35 @@ void GameManager::Update()
 	
 	if (currentScreenType == Start)
 	{
+		if (dominoEnemyOne->currentUnitState == DominoUnit::UnitState::Lose)
+		{
+			dominoEnemyTwo->currentUnitState = DominoUnit::UnitState::Win;
+			
+			if (dominoEnemyOne->mDominosFallen)
+			{
+				gameOverTimer += mTimer->DeltaTime();
+				if (gameOverTimer >= maxGameOverTimer)
+				{
+					gameOverTimer = 0.0f;
+					BuildStartBoard();
+				}
+			}
+		}
+		else if (dominoEnemyTwo->currentUnitState == DominoUnit::UnitState::Lose)
+		{
+			dominoEnemyOne->currentUnitState = DominoUnit::UnitState::Win;
+			
+			if (dominoEnemyTwo->mDominosFallen)
+			{
+				gameOverTimer += mTimer->DeltaTime();
+				if (gameOverTimer >= maxGameOverTimer)
+				{
+					gameOverTimer = 0.0f;
+					BuildStartBoard();
+				}
+			}
+		}
+		
 		dominoEnemyOne->Update();
 		dominoEnemyTwo->Update();
 		
@@ -186,15 +215,21 @@ void GameManager::Update()
 			{
 				dominoEnemyOne->currentUnitState = DominoUnit::UnitState::Win;
 				
-				AddPoint(false);
-				currentScreenType = GameOver;
+				if (dominoPlayerOne->mDominosFallen)
+				{
+					AddPoint(false);
+					currentScreenType = GameOver;
+				}
 			}
 			else if (dominoEnemyOne->currentUnitState == DominoUnit::UnitState::Lose)
 			{
 				dominoPlayerOne->currentUnitState = DominoUnit::UnitState::Win;
 				
-				AddPoint(true);
-				currentScreenType = GameOver;
+				if (dominoEnemyOne->mDominosFallen)
+				{
+					AddPoint(true);
+					currentScreenType = GameOver;
+				}
 			}
 			dominoPlayerOne->Update();
 			dominoEnemyOne->Update();
@@ -205,15 +240,21 @@ void GameManager::Update()
 			{
 				dominoPlayerTwo->currentUnitState = DominoUnit::UnitState::Win;
 				
-				AddPoint(false);
-				currentScreenType = GameOver;
+				if (dominoPlayerOne->mDominosFallen)
+				{
+					AddPoint(false);
+					currentScreenType = GameOver;
+				}
 			}
 			else if (dominoPlayerTwo->currentUnitState == DominoUnit::UnitState::Lose)
 			{
 				dominoPlayerOne->currentUnitState = DominoUnit::UnitState::Win;
 				
-				AddPoint(true);
-				currentScreenType = GameOver;
+				if (dominoPlayerTwo->mDominosFallen)
+				{
+					AddPoint(true);
+					currentScreenType = GameOver;
+				}
 			}
 			dominoPlayerOne->Update();
 			dominoPlayerTwo->Update();
@@ -263,6 +304,8 @@ void GameManager::Render()
 		mStartScreenPerCoinFont->Render();
 		mStartScreenWinGameFont->Render();
 		
+		dominoEnemyOne->RenderDominos();
+		dominoEnemyTwo->RenderDominos();
 		dominoEnemyOne->Render();
 		dominoEnemyTwo->Render();
 	}
@@ -270,11 +313,15 @@ void GameManager::Render()
 	{
 		if (onePlayer)
 		{
+			dominoPlayerOne->RenderDominos();
+			dominoEnemyOne->RenderDominos();
 			dominoPlayerOne->Render();
 			dominoEnemyOne->Render();
 		}
 		else
 		{
+			dominoPlayerOne->RenderDominos();
+			dominoPlayerTwo->RenderDominos();
 			dominoPlayerOne->Render();
 			dominoPlayerTwo->Render();
 		}
@@ -285,11 +332,15 @@ void GameManager::Render()
 		
 		if (onePlayer)
 		{
+			dominoPlayerOne->RenderDominos();
+			dominoEnemyOne->RenderDominos();
 			dominoPlayerOne->Render();
 			dominoEnemyOne->Render();
 		}
 		else
 		{
+			dominoPlayerOne->RenderDominos();
+			dominoPlayerTwo->RenderDominos();
 			dominoPlayerOne->Render();
 			dominoPlayerTwo->Render();
 		}
@@ -313,9 +364,6 @@ void GameManager::BuildBoard(bool isOnePlayer)
 		dominoPlayerOne = new DominoPlayer(DominoUnit::LeftSide);
 		dominoPlayerTwo = new DominoPlayer(DominoUnit::RightSide);
 	}
-	
-	std::cout << "BUILDBOARD" << std::endl;
-	mStage->PrintStage();
 }
 
 void GameManager::BuildStartBoard()
@@ -327,9 +375,6 @@ void GameManager::BuildStartBoard()
 	
 	dominoEnemyOne = new DominoEnemy(DominoUnit::LeftSide);
 	dominoEnemyTwo = new DominoEnemy(DominoUnit::RightSide);
-	
-	std::cout << "---STARTBOARD---" << std::endl;
-	mStage->PrintStage();
 }
 
 void GameManager::ClearBoard()
