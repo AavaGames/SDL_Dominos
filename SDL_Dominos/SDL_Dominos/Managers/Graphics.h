@@ -21,6 +21,7 @@ class Graphics
 public:
 	static const short SCREEN_WIDTH = 512;
 	static const short SCREEN_HEIGHT = 448;
+	static const short WINDOWSCALE = 2;
 	
 	static Graphics * Instance();
 	static void Release ();

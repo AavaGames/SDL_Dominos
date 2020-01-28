@@ -64,7 +64,7 @@ bool Graphics::Init()
 		return false;
 	}
 	
-	mWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	mWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH * WINDOWSCALE, SCREEN_HEIGHT * WINDOWSCALE, SDL_WINDOW_SHOWN);
 	if (mWindow == nullptr)
 	{
 		std::cerr << "Unable to initialize SDL! SDL Error: " << SDL_GetError() << std::endl;
@@ -77,6 +77,12 @@ bool Graphics::Init()
 	{
 		std::cerr << "Unable to initialize SDL! SDL Error: " << SDL_GetError() << std::endl;
 		
+		return false;
+	}
+	
+	if (SDL_RenderSetScale(mRenderer, WINDOWSCALE, WINDOWSCALE) != 0)
+	{
+		std::cerr << "Unable to Set Render Scale! SDL Error: " << SDL_GetError() << std::endl;
 		return false;
 	}
 	

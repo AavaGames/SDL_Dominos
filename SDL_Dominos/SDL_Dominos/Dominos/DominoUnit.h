@@ -28,6 +28,7 @@ public:
 	
 	Domino::Direction currentDirection;
 	Domino::Direction prevDirection;
+	Vector2 mapPosition = Vec2_Zero;
 	
 	DominoUnit(UnitSide side);
 	~DominoUnit();
@@ -63,8 +64,6 @@ protected:
 	Texture * mLeftSprite;
 	
 	Texture * mCurrentSprite;
-
-	Vector2 mapPosition = Vec2_Zero;
 	
 	void MoveToMapCoord(Vector2 mapPos);
 	

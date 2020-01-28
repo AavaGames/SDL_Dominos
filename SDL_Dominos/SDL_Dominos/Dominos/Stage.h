@@ -38,12 +38,8 @@ public:
 	
 	Stage();
 	~Stage();
-	
-	//map starts at 0,0 needs an offset of TILE_SIZE / 2 for x + y then go down 
-	
 private:
 	static Stage * sInstance;
-	
 };
 
 #endif /* Stage_h */

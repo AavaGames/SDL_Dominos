@@ -9,6 +9,7 @@
 #ifndef __DOMINOENEMY_H
 #define __DOMINOENEMY_H
 #include "DominoUnit.h"
+#include <stdlib.h>     /* srand, rand */
 
 class DominoEnemy : public DominoUnit
 {
@@ -16,10 +17,20 @@ public:
 	DominoEnemy(UnitSide side);
 	~DominoEnemy();
 
-	void AI();
+	Domino::Direction AI();
 	void Input() override;
+	void Update();
 private:
+	std::vector<int> previousDirections;
+	const int turnRate = 25;
+	const int maxLoops = 30;
 	
+	int RandomDirection();
+	bool TurnTime();
+	bool GhostCollisionCheck(Domino::Direction direction);
+	
+	unsigned int seedOffset;
+	void SeedRandom();
 };
 
 #endif /* DominoEnemy_h */

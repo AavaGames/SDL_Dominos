@@ -14,11 +14,6 @@
 		92A9B03923CFD20600DE4ED2 /* InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92A9B03823CFD20600DE4ED2 /* InputManager.cpp */; };
 		92A9C05323CE34B000ACAD12 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92A9C05223CE34B000ACAD12 /* GameManager.cpp */; };
 		92A9C05623CE381A00ACAD12 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92A9C05423CE381A00ACAD12 /* main.cpp */; };
-		92B373B923DB5F2D000B34D9 /* Collider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B373B823DB5F2D000B34D9 /* Collider.cpp */; };
-		92B373BC23DB5F4C000B34D9 /* BoxCollider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B373BB23DB5F4C000B34D9 /* BoxCollider.cpp */; };
-		92B373BF23DB6014000B34D9 /* CircleCollider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B373BE23DB6014000B34D9 /* CircleCollider.cpp */; };
-		92B373C323DB61C3000B34D9 /* PhysEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B373C223DB61C3000B34D9 /* PhysEntity.cpp */; };
-		92B373C923DB6258000B34D9 /* PhysicsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B373C723DB6258000B34D9 /* PhysicsManager.cpp */; };
 		92B373CC23DB7260000B34D9 /* Stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92B373CB23DB7260000B34D9 /* Stage.cpp */; };
 		92BA9A3223CE2F74009C4744 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92BA9A3123CE2F74009C4744 /* Graphics.cpp */; };
 		92C89F2E23D0EA6B00B8F52F /* AnimatedTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92C89F2D23D0EA6B00B8F52F /* AnimatedTexture.cpp */; };
@@ -61,17 +56,6 @@
 		92A9B03823CFD20600DE4ED2 /* InputManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InputManager.cpp; sourceTree = "<group>"; };
 		92A9C05223CE34B000ACAD12 /* GameManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
 		92A9C05423CE381A00ACAD12 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		92B373B723DB5F24000B34D9 /* Collider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Collider.h; sourceTree = "<group>"; };
-		92B373B823DB5F2D000B34D9 /* Collider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Collider.cpp; sourceTree = "<group>"; };
-		92B373BA23DB5F42000B34D9 /* BoxCollider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoxCollider.h; sourceTree = "<group>"; };
-		92B373BB23DB5F4C000B34D9 /* BoxCollider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BoxCollider.cpp; sourceTree = "<group>"; };
-		92B373BD23DB6008000B34D9 /* CircleCollider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleCollider.h; sourceTree = "<group>"; };
-		92B373BE23DB6014000B34D9 /* CircleCollider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CircleCollider.cpp; sourceTree = "<group>"; };
-		92B373C123DB61B9000B34D9 /* PhysEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysEntity.h; sourceTree = "<group>"; };
-		92B373C223DB61C3000B34D9 /* PhysEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PhysEntity.cpp; sourceTree = "<group>"; };
-		92B373C523DB61E6000B34D9 /* PhysicsHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysicsHelper.h; sourceTree = "<group>"; };
-		92B373C623DB6200000B34D9 /* PhysicsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysicsManager.h; sourceTree = "<group>"; };
-		92B373C723DB6258000B34D9 /* PhysicsManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsManager.cpp; sourceTree = "<group>"; };
 		92B373CA23DB6B89000B34D9 /* Stage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stage.h; sourceTree = "<group>"; };
 		92B373CB23DB7260000B34D9 /* Stage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Stage.cpp; sourceTree = "<group>"; };
 		92BA9A3123CE2F74009C4744 /* Graphics.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Graphics.cpp; sourceTree = "<group>"; };
@@ -148,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				92A9C05423CE381A00ACAD12 /* main.cpp */,
-				92B373C023DB61A1000B34D9 /* Physics */,
 				9257378723CE5DA20082D4BD /* Entities */,
 				92D54EF023DA1F4B00A939DE /* Managers */,
 				92D54EF123DA284500A939DE /* Dominos */,
@@ -168,24 +151,6 @@
 				92824A4B23CCF8C20042234E /* SDL2.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		92B373C023DB61A1000B34D9 /* Physics */ = {
-			isa = PBXGroup;
-			children = (
-				92B373B723DB5F24000B34D9 /* Collider.h */,
-				92B373B823DB5F2D000B34D9 /* Collider.cpp */,
-				92B373BA23DB5F42000B34D9 /* BoxCollider.h */,
-				92B373BB23DB5F4C000B34D9 /* BoxCollider.cpp */,
-				92B373BD23DB6008000B34D9 /* CircleCollider.h */,
-				92B373BE23DB6014000B34D9 /* CircleCollider.cpp */,
-				92B373C523DB61E6000B34D9 /* PhysicsHelper.h */,
-				92B373C623DB6200000B34D9 /* PhysicsManager.h */,
-				92B373C723DB6258000B34D9 /* PhysicsManager.cpp */,
-				92B373C123DB61B9000B34D9 /* PhysEntity.h */,
-				92B373C223DB61C3000B34D9 /* PhysEntity.cpp */,
-			);
-			path = Physics;
 			sourceTree = "<group>";
 		};
 		92D54EF023DA1F4B00A939DE /* Managers */ = {
@@ -286,16 +251,11 @@
 				92D54EFB23DA32F100A939DE /* DominoUnit.cpp in Sources */,
 				92BA9A3223CE2F74009C4744 /* Graphics.cpp in Sources */,
 				92D54EF723DA292E00A939DE /* DominoPlayer.cpp in Sources */,
-				92B373C323DB61C3000B34D9 /* PhysEntity.cpp in Sources */,
 				92D54EF423DA28A900A939DE /* Domino.cpp in Sources */,
-				92B373BC23DB5F4C000B34D9 /* BoxCollider.cpp in Sources */,
-				92B373B923DB5F2D000B34D9 /* Collider.cpp in Sources */,
 				92A9C05323CE34B000ACAD12 /* GameManager.cpp in Sources */,
-				92B373C923DB6258000B34D9 /* PhysicsManager.cpp in Sources */,
 				92A9B03923CFD20600DE4ED2 /* InputManager.cpp in Sources */,
 				92D48E1F23D229E9001BB2EB /* AudioManager.cpp in Sources */,
 				92D54EFD23DA330000A939DE /* DominoEnemy.cpp in Sources */,
-				92B373BF23DB6014000B34D9 /* CircleCollider.cpp in Sources */,
 				9257378D23CE5EA10082D4BD /* GameEntity.cpp in Sources */,
 				92A9C05623CE381A00ACAD12 /* main.cpp in Sources */,
 				9257378123CE46B50082D4BD /* Timer.cpp in Sources */,

@@ -7,10 +7,15 @@
 //
 
 #include "Managers/GameManager.h"
+#include <stdio.h>      /* printf, scanf, puts, NULL */
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>		/* time */
+
 using SDLFramework::GameManager;
 
 int main(int argc, char * args[])
 {
+	srand(time(NULL));
 	GameManager * game = new GameManager();
 	
 	game->Run();
