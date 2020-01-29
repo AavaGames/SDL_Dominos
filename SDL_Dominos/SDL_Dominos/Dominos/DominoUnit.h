@@ -51,7 +51,9 @@ public:
 protected:
 	Timer * mTimer;
 	InputManager * mInputManager;
+	AudioManager * mAudio;
 	Stage * mStage;
+	Mix_Chunk * mMoveSFX;
 	
 	std::vector<Domino *> dominoList;
 	float dominoFallDelayTimer;

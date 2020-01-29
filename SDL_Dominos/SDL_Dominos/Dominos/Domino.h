@@ -9,6 +9,7 @@
 #ifndef __DOMINO_H
 #define __DOMINO_H
 #include "Texture.h"
+#include "AudioManager.h"
 
 using namespace SDLFramework;
 
@@ -26,6 +27,8 @@ public:
 	void Fall();
 	void Render();
 private:
+	AudioManager * mAudio;
+	
 	Texture * mStandingTexture;
 	Texture * mFallenTexture;
 	

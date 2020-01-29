@@ -40,6 +40,7 @@ void Graphics::Render()
 
 Graphics::Graphics() : mRenderer(nullptr)
 {
+	windowScale = 1;
 	sInitialized = Init();
 }
 
@@ -64,7 +65,7 @@ bool Graphics::Init()
 		return false;
 	}
 	
-	mWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH * WINDOWSCALE, SCREEN_HEIGHT * WINDOWSCALE, SDL_WINDOW_SHOWN);
+	mWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH * windowScale, SCREEN_HEIGHT * windowScale, SDL_WINDOW_SHOWN);
 	if (mWindow == nullptr)
 	{
 		std::cerr << "Unable to initialize SDL! SDL Error: " << SDL_GetError() << std::endl;
@@ -80,7 +81,7 @@ bool Graphics::Init()
 		return false;
 	}
 	
-	if (SDL_RenderSetScale(mRenderer, WINDOWSCALE, WINDOWSCALE) != 0)
+	if (SDL_RenderSetScale(mRenderer, windowScale, windowScale) != 0)
 	{
 		std::cerr << "Unable to Set Render Scale! SDL Error: " << SDL_GetError() << std::endl;
 		return false;
@@ -142,6 +143,26 @@ SDL_Texture * Graphics::CreateTextTexture(std::string text, TTF_Font * font, SDL
 	
 	SDL_FreeSurface(surface);
 	return tex;
+}
+
+void Graphics::IncreaseScale()
+{
+	windowScale ++;
+	
+	SDL_SetWindowSize(mWindow, SCREEN_WIDTH * windowScale, SCREEN_HEIGHT * windowScale);
+	SDL_RenderSetScale(mRenderer, windowScale, windowScale);
+}
+
+void Graphics::DecreaseScale()
+{
+	windowScale--;
+	if (windowScale < 1)
+	{
+		windowScale = 1;
+	}
+	
+	SDL_SetWindowSize(mWindow, SCREEN_WIDTH * windowScale, SCREEN_HEIGHT * windowScale);
+	SDL_RenderSetScale(mRenderer, windowScale, windowScale);
 }
 
 }

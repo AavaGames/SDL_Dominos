@@ -29,7 +29,7 @@ void GameManager::Release()
 GameManager::GameManager() : mQuit(false)
 {
 	mGraphics = Graphics::Instance();
-	//If failed to create correctly shut down run
+	//If failed to create correctly shut down
 	if (!Graphics::Initialized())
 	{
 		mQuit = true;
@@ -156,6 +156,15 @@ void GameManager::Update()
 {
 	mInputManager->Update();
 	
+	if (mInputManager->KeyPressed(SDL_SCANCODE_EQUALS))
+	{
+		mGraphics->IncreaseScale();
+	}
+	else if (mInputManager->KeyPressed(SDL_SCANCODE_MINUS))
+	{
+		mGraphics->DecreaseScale();
+	}
+	
 	if (currentScreenType == Start)
 	{
 		if (dominoEnemyOne->currentUnitState == DominoUnit::UnitState::Lose)
@@ -192,6 +201,8 @@ void GameManager::Update()
 		
 		if (mInputManager->KeyPressed(SDL_SCANCODE_1))
 		{
+			mAudioManager->PlaySFX("SFX/StartGame.wav", 0, -1);
+			gameOverMusic = true;
 			leftPoints = 0;
 			rightPoints = 0;
 			
@@ -200,6 +211,8 @@ void GameManager::Update()
 		}
 		else if (mInputManager->KeyPressed(SDL_SCANCODE_2))
 		{
+			mAudioManager->PlaySFX("SFX/StartGame.wav", 0, -1);
+			gameOverMusic = true;
 			leftPoints = 0;
 			rightPoints = 0;
 			
@@ -267,6 +280,11 @@ void GameManager::Update()
 	}
 	else if (currentScreenType == GameOver)
 	{
+		if ((leftPoints == 4 || rightPoints == 4) && gameOverMusic)
+		{
+			mAudioManager->PlayMusic("SFX/EndMatch.wav", 0);
+			gameOverMusic = false;
+		}
 		gameOverTimer += mTimer->DeltaTime();
 		if (gameOverTimer >= maxGameOverTimer)
 		{
@@ -379,7 +397,6 @@ void GameManager::BuildStartBoard()
 
 void GameManager::ClearBoard()
 {
-	//If this isnt here once you change modes it stops rendering for some reason
 	mBackgroundTexture = new Texture("Art/Dominos_SpriteSheet.png", 0, 0, 512, 448, true);
 	mBackgroundTexture->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT*0.5f));
 	

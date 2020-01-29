@@ -10,6 +10,7 @@
 
 Domino::Domino(Vector2 pos, bool leftSide, Direction currentDirection, Direction prevDirection)
 {
+	mAudio = AudioManager::Instance();
 	currentDominoState = Standing;
 	
 	if (leftSide)
@@ -122,6 +123,6 @@ void Domino::Render()
 
 void Domino::Fall()
 {
-	//Play SFX
+	mAudio->PlaySFX("SFX/Fall.wav", 0, 2);
 	mCurrentTexture = mFallenTexture;
 }

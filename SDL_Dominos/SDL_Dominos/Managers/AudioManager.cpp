@@ -30,7 +30,7 @@ void AudioManager::Release()
 AudioManager::AudioManager()
 {
 	mAssetManager = AssetManager::Instance();
-	/*
+	
 	if (SDL_InitSubSystem(SDL_INIT_AUDIO) < 0)
 	{
 		std::cerr << "Unable to initialize SDL audio! SDL Error: " << SDL_GetError() << std::endl;
@@ -41,7 +41,6 @@ AudioManager::AudioManager()
 	{
 		std::cerr << "Unable to initialize audio! Mix Error: " << Mix_GetError() << std::endl;
 	}
-	*/
 }
 
 AudioManager::~AudioManager()
@@ -51,14 +50,6 @@ AudioManager::~AudioManager()
 	Mix_Quit();
 }
 
-/* Textbook Code
-void AudioManager::PlayMusic(std::string filename, int loops)
-{
-	Mix_PlayMusic(mAssetManager->GetMusic(filename), loops);
-}
-*/
-
-//Combined Code
 Mix_Music * AudioManager::PlayMusic(std::string filename, int loops, bool returnPointer, bool managed)
 {
 	Mix_Music * music = mAssetManager->GetMusic(filename, managed);
@@ -99,14 +90,6 @@ void AudioManager::StopMusic()
 	Mix_HaltMusic();
 }
 
-/* Textbook Code
-void AudioManager::PlaySFX(std::string filename, int loops, int channel)
-{
-	Mix_PlayChannel(channel, mAssetManager->GetSFX(filename), loops);
-}
-*/
-
-//Combined Code
 Mix_Chunk * AudioManager::PlaySFX(std::string filename, int loops, int channel, bool returnPointer, bool managed)
 {
 	Mix_Chunk * sfx = mAssetManager->GetSFX(filename, managed);

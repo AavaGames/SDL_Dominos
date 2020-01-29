@@ -94,6 +94,7 @@ private:
 	const float maxGameOverTimer = 2.0f;
 	
 	Stage * mStage;
+	bool gameOverMusic;
 };
 
 }

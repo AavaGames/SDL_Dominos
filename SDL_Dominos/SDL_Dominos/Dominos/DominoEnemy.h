@@ -9,7 +9,7 @@
 #ifndef __DOMINOENEMY_H
 #define __DOMINOENEMY_H
 #include "DominoUnit.h"
-#include <stdlib.h>     /* srand, rand */
+#include <stdlib.h>
 
 class DominoEnemy : public DominoUnit
 {
@@ -22,7 +22,7 @@ public:
 	void Update();
 private:
 	std::vector<int> previousDirections;
-	const int turnRate = 25;
+	const int turnRate = 10;
 	const int maxLoops = 30;
 	
 	int RandomDirection();

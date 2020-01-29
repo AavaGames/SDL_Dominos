@@ -10,9 +10,11 @@
 
 DominoUnit::DominoUnit(UnitSide side)
 {
+	mAudio = AudioManager::Instance();
 	mInputManager = InputManager::Instance();
 	mTimer = Timer::Instance();
 	mStage = Stage::Instance();
+	mMoveSFX = mAudio->PlaySFX("SFX/Step.wav", 0, 1, true, true);
 	
 	currentUnitState = Playing;
 	currentUnitSide = side;
@@ -93,7 +95,6 @@ void DominoUnit::Update()
 		Input();
 		if (Turn())
 		{
-			//Play SFX
 			PlaceDomino();
 			Movement();
 		}
@@ -162,6 +163,7 @@ void DominoUnit::Movement()
 		mapPosition.x--;
 	}
 	
+	mAudio->PlaySFX(mMoveSFX);
 	prevDirection = currentDirection;
 	MoveToMapCoord(mapPosition);
 	CollisionCheck();
@@ -219,7 +221,6 @@ void DominoUnit::FallDominos()
 
 void DominoUnit::Lost()
 {
-	//Play SFX
 	currentUnitState = Lose;
 	dominoIterator = (int)dominoList.size() - 1;
 }

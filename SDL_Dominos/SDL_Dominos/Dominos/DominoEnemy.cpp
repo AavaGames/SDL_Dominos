@@ -25,7 +25,6 @@ void DominoEnemy::Update()
 	{
 		if (Turn())
 		{
-			//Play SFX
 			Input();
 			PlaceDomino();
 			Movement();
@@ -106,24 +105,20 @@ Domino::Direction DominoEnemy::AI()
 	}
 	
 	int directionIter = 0;
-	//Domino::Direction direction = possibleDirections[directionIter];
 	int timesLooped = 0;
+	
 	//Rules
 	while (timesLooped != maxLoops)
 	{
-		std::cout << timesLooped << std::endl;
-		
 		//Random Turn
 		if (TurnTime())
 		{
 			directionIter = RandomDirection();
 		}
 
-		//Colliding
+		//If Colliding
 		if (directionCollision[directionIter])
 		{
-			std::cout << "COLLIDING ";
-			
 			directionIter = RandomDirection();
 			
 			timesLooped++;
@@ -152,7 +147,7 @@ int DominoEnemy::RandomDirection()
 	
 	//Between 0 - 2
 	directionIter = rand() % 2 + 1;
-	std::cout << "Direction: " << directionIter << std::endl;
+	
 	return directionIter;
 }
 
